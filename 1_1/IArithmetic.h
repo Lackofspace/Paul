@@ -3,10 +3,10 @@
 class IArithmetic {
 public:
     explicit IArithmetic(int mod);
-    int Add(int a, int b) const;
-    int Subtract(int a, int b) const;
-    int Multiply(int a, int b) const;
-    int Divide(int a, int b) const;
+    virtual int Add(int a, int b) const = 0;
+    virtual int Subtract(int a, int b) const = 0;
+    virtual int Multiply(int a, int b) const = 0;
+    virtual int Divide(int a, int b) const = 0;
 
 private:
     int modulo;
