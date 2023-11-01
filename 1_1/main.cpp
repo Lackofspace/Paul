@@ -1,7 +1,5 @@
-// main.cpp
-
 #include <iostream>
-#include "ModularArithmetic.h"
+#include "IArithmetic.h"
 #include "ModularOperand.h"
 
 int main() {
@@ -16,7 +14,6 @@ int main() {
     int resultMultiply = ma.Multiply(a.GetValue(), b.GetValue());
     int resultDivide = ma.Divide(a.GetValue(), b.GetValue());
 
-    // Вывод результатов
     std::cout << a.GetValue() << " + " << b.GetValue() << " = " << resultAdd << " mod " << modulo << std::endl;
     std::cout << a.GetValue() << " - " << b.GetValue() << " = " << resultSubtract << " mod " << modulo << std::endl;
     std::cout << a.GetValue() << " * " << b.GetValue() << " = " << resultMultiply << " mod " << modulo << std::endl;

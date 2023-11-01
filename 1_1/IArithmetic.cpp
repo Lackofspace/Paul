@@ -1,8 +1,8 @@
-// ModularArithmetic.cpp
-
 #include <iostream>
 #include <tuple>
-#include "ModularArithmetic.h"
+#include "IArithmetic.h"
+
+#define EXIT_ERROR -1;
 
 
 std::tuple<int, int, int> GcdExtended(int number, int module) {
@@ -35,22 +35,23 @@ int IArithmetic::Multiply(int a, int b) const {
 }
 
 int IArithmetic::Divide(int a, int b) const {
+
+    std::tuple<int, int, int> result = GcdExtended(b, modulo);
+
+    int div = std::get<0>(result);
+
     try {
-        std::tuple<int, int, int> result = GcdExtended(b, modulo);
-
-        int div = std::get<0>(result);
-
         if (div != 1) {
-            throw std::runtime_error("The divisor and the modulus are not mutually simple\nThe result will be -1");
+            throw std::runtime_error("The divisor and the modulus are not mutually simple\n"
+                                     "The result will be -1 instead");
         }
+    } catch (const std::runtime_error& e) {
+
+        std::cerr << "Error: " << e.what() << std::endl;
+        return EXIT_ERROR;
+    }
 
         int x = std::get<1>(result) + modulo;
 
         return IArithmetic::Multiply(a, x);
-    } catch (const std::runtime_error& e) {
-
-        std::cerr << "Error: " << e.what() << std::endl;
-
-        return -1;
-    }
 }

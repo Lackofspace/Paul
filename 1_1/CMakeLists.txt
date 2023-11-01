@@ -3,4 +3,4 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(1_1 main.cpp ModularArithmetic.cpp ModularOperand.cpp)
+add_executable(1_1 main.cpp IArithmetic.cpp ModularOperand.cpp)

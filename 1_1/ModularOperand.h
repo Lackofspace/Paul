@@ -1,7 +1,5 @@
-// ModularOperand.h
-
 #pragma once
-#include "ModularArithmetic.h"
+#include "IArithmetic.h"
 
 class ModularOperand {
 public:
@@ -10,5 +8,4 @@ public:
 
 private:
     int m_operand;
-//    const IArithmetic m_arithmetic;
 };

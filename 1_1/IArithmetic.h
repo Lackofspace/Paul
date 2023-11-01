@@ -1,5 +1,3 @@
-// ModularArithmetic.h
-
 #pragma once
 
 class IArithmetic {

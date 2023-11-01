@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: untitled
+# Project: 1_2
 # Configurations: Debug
 # =============================================================================
 
@@ -39,58 +39,58 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/lkey2/CLionProjects/Paul/1_1/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/lkey2/CLionProjects/Paul/1_2/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target 1_1
+# Object build statements for EXECUTABLE target 1_2
 
 
 #############################################
-# Order-only phony target for 1_1
+# Order-only phony target for 1_2
 
-build cmake_object_order_depends_target_1_1: phony || CMakeFiles/1_1.dir
+build cmake_object_order_depends_target_1_2: phony || CMakeFiles/1_2.dir
 
-build CMakeFiles/1_1.dir/main.cpp.obj: CXX_COMPILER__1_1_Debug C$:/Users/lkey2/CLionProjects/Paul/1_1/main.cpp || cmake_object_order_depends_target_1_1
-  DEP_FILE = CMakeFiles\1_1.dir\main.cpp.obj.d
+build CMakeFiles/1_2.dir/main.cpp.obj: CXX_COMPILER__1_2_Debug C$:/Users/lkey2/CLionProjects/Paul/1_2/main.cpp || cmake_object_order_depends_target_1_2
+  DEP_FILE = CMakeFiles\1_2.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles\1_1.dir
-  OBJECT_FILE_DIR = CMakeFiles\1_1.dir
+  OBJECT_DIR = CMakeFiles\1_2.dir
+  OBJECT_FILE_DIR = CMakeFiles\1_2.dir
 
-build CMakeFiles/1_1.dir/IArithmetic.cpp.obj: CXX_COMPILER__1_1_Debug C$:/Users/lkey2/CLionProjects/Paul/1_1/IArithmetic.cpp || cmake_object_order_depends_target_1_1
-  DEP_FILE = CMakeFiles\1_1.dir\IArithmetic.cpp.obj.d
+build CMakeFiles/1_2.dir/CharacterUtils.cpp.obj: CXX_COMPILER__1_2_Debug C$:/Users/lkey2/CLionProjects/Paul/1_2/CharacterUtils.cpp || cmake_object_order_depends_target_1_2
+  DEP_FILE = CMakeFiles\1_2.dir\CharacterUtils.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles\1_1.dir
-  OBJECT_FILE_DIR = CMakeFiles\1_1.dir
+  OBJECT_DIR = CMakeFiles\1_2.dir
+  OBJECT_FILE_DIR = CMakeFiles\1_2.dir
 
-build CMakeFiles/1_1.dir/ModularOperand.cpp.obj: CXX_COMPILER__1_1_Debug C$:/Users/lkey2/CLionProjects/Paul/1_1/ModularOperand.cpp || cmake_object_order_depends_target_1_1
-  DEP_FILE = CMakeFiles\1_1.dir\ModularOperand.cpp.obj.d
+build CMakeFiles/1_2.dir/TextEncryptor.cpp.obj: CXX_COMPILER__1_2_Debug C$:/Users/lkey2/CLionProjects/Paul/1_2/TextEncryptor.cpp || cmake_object_order_depends_target_1_2
+  DEP_FILE = CMakeFiles\1_2.dir\TextEncryptor.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles\1_1.dir
-  OBJECT_FILE_DIR = CMakeFiles\1_1.dir
+  OBJECT_DIR = CMakeFiles\1_2.dir
+  OBJECT_FILE_DIR = CMakeFiles\1_2.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target 1_1
+# Link build statements for EXECUTABLE target 1_2
 
 
 #############################################
-# Link the executable 1_1.exe
+# Link the executable 1_2.exe
 
-build 1_1.exe: CXX_EXECUTABLE_LINKER__1_1_Debug CMakeFiles/1_1.dir/main.cpp.obj CMakeFiles/1_1.dir/IArithmetic.cpp.obj CMakeFiles/1_1.dir/ModularOperand.cpp.obj
+build 1_2.exe: CXX_EXECUTABLE_LINKER__1_2_Debug CMakeFiles/1_2.dir/main.cpp.obj CMakeFiles/1_2.dir/CharacterUtils.cpp.obj CMakeFiles/1_2.dir/TextEncryptor.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\1_1.dir
+  OBJECT_DIR = CMakeFiles\1_2.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = 1_1.exe
-  TARGET_IMPLIB = lib1_1.dll.a
-  TARGET_PDB = 1_1.exe.dbg
+  TARGET_FILE = 1_2.exe
+  TARGET_IMPLIB = lib1_2.dll.a
+  TARGET_PDB = 1_2.exe.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\lkey2\CLionProjects\Paul\1_1\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\lkey2\CLionProjects\Paul\1_2\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -101,7 +101,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\lkey2\CLionProjects\Paul\1_1\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\lkey2\CLionProjects\Paul\1_1 -BC:\Users\lkey2\CLionProjects\Paul\1_1\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\lkey2\CLionProjects\Paul\1_2\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\lkey2\CLionProjects\Paul\1_2 -BC:\Users\lkey2\CLionProjects\Paul\1_2\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -111,7 +111,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build 1_1: phony 1_1.exe
+build 1_2: phony 1_2.exe
 
 # =============================================================================
 # Folder targets.
@@ -119,9 +119,9 @@ build 1_1: phony 1_1.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/lkey2/CLionProjects/Paul/1_1/cmake-build-debug
+# Folder: C:/Users/lkey2/CLionProjects/Paul/1_2/cmake-build-debug
 
-build all: phony 1_1.exe
+build all: phony 1_2.exe
 
 # =============================================================================
 # Built-in targets
