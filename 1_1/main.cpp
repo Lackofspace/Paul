@@ -1,23 +1,38 @@
 #include <iostream>
 #include "IArithmetic.h"
-#include "ModularOperand.h"
+#include "ModularArithmetic.h"
 
-int main() {
-    int modulo = 26;
-    IArithmetic ma(modulo);
+int main(int argc, char **argv) {
+    std::cout
+            << "Please provide 3 (three) params in the next order separated by spaces: 1) left operand, 2) right operand and 3) module\n";
 
-    ModularOperand a(11, ma);
-    ModularOperand b(13, ma);
+    if (argc < 3) {
+        std::cout << "Unable to get required params";
 
-    int resultAdd = ma.Add(a.GetValue(), b.GetValue());
-    int resultSubtract = ma.Subtract(a.GetValue(), b.GetValue());
-    int resultMultiply = ma.Multiply(a.GetValue(), b.GetValue());
-    int resultDivide = ma.Divide(a.GetValue(), b.GetValue());
+        return EXIT_FAILURE;
+    }
 
-    std::cout << a.GetValue() << " + " << b.GetValue() << " = " << resultAdd << " mod " << modulo << std::endl;
-    std::cout << a.GetValue() << " - " << b.GetValue() << " = " << resultSubtract << " mod " << modulo << std::endl;
-    std::cout << a.GetValue() << " * " << b.GetValue() << " = " << resultMultiply << " mod " << modulo << std::endl;
-    std::cout << a.GetValue() << " / " << b.GetValue() << " = " << resultDivide << " mod " << modulo << std::endl;
+    try {
+        long long leftOperand = std::atoll(argv[1]);
+        long long rightOperand = std::atoll(argv[2]);
+        long long module = std::atoll(argv[3]);
 
-    return 0;
+
+        IArithmetic *ma = new ModularArithmetic(module);
+
+        long long resultAdd = ma->Add(leftOperand, rightOperand);
+        long long resultSubtract = ma->Subtract(leftOperand, rightOperand);
+        long long resultMultiply = ma->Multiply(leftOperand, rightOperand);
+        long long resultDivide = ma->Divide(leftOperand, rightOperand);
+
+        std::cout << leftOperand << " + " << rightOperand << " = " << resultAdd << " mod " << module << std::endl;
+        std::cout << leftOperand << " - " << rightOperand << " = " << resultSubtract << " mod " << module << std::endl;
+        std::cout << leftOperand << " * " << rightOperand << " = " << resultMultiply << " mod " << module << std::endl;
+        std::cout << leftOperand << " / " << rightOperand << " = " << resultDivide << " mod " << module << std::endl;
+    }
+    catch (std::runtime_error e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    return EXIT_SUCCESS;
 }

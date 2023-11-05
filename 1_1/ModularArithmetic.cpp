@@ -1,50 +1,53 @@
 #include <tuple>
-#include <iostream>
 #include "ModularArithmetic.h"
 
-// Отсутствие наибольшего общего делителя greatest common divisor
-constexpr int NO_GCD = -1;
+std::tuple<int, int, int> CalculateAdvancedEuclidAlgorithm(int number, int module);
 
-int ModularArithmetic::Add(int leftOp, int rightOp) const {
+ModularArithmetic::ModularArithmetic(long long module) : m_module(module) {
+}
+
+long long ModularArithmetic::Add(long long leftOp, long long rightOp) const {
     return (leftOp + rightOp) % m_module;
 }
 
-
-ModularArithmetic::ModularArithmetic(int module) : m_module(module) {
-}
-
-int ModularArithmetic::Subtract(int leftOp, int rightOp) const {
-    int result = (leftOp - rightOp) % m_module;
+long long ModularArithmetic::Subtract(long long leftOp, long long rightOp) const {
+    long long result = (leftOp - rightOp) % m_module;
     if (result < 0) {
         result += m_module;
     }
     return result;
 }
 
-int ModularArithmetic::Multiply(int a, int b) const {
-    return (a * b) % m_module;
+long long ModularArithmetic::Multiply(long long leftOp, long long rightOp) const {
+    return (leftOp * rightOp) % m_module;
 }
 
-std::tuple<int, int, int> CalculateAdvancedEuclidAlgorithm(int number, int module);
-
-int ModularArithmetic::Divide(int a, int b) const {
-    std::tuple<int, int, int> result = CalculateAdvancedEuclidAlgorithm(b, m_module);
-
+long long ModularArithmetic::Divide(long long leftOp, long long rightOp) const {
+    std::tuple<int, int, int> result = CalculateAdvancedEuclidAlgorithm(rightOp, m_module);
     int div = std::get<0>(result);
-
-    try {
-        if (div != 1) {
-            throw std::runtime_error("The divisor and the modulus are not mutually simple\n"
-                                     "The result will be -1 instead");
-        }
-    } catch (const std::runtime_error &e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return NO_GCD;
+    if (div != 1) {
+        throw std::runtime_error("The divisor and the modulus are not mutually simple\n");
     }
 
-    int x = std::get<1>(result) + m_module;
+    return (leftOp * InverseElement(rightOp)) % m_module;
+}
 
-    return Multiply(a, x);
+//base ^ p
+long long ModularArithmetic::BinaryPower(long long base, long long p) const {
+    if (p == 1) {
+        return base;
+    }
+
+    if (p % 2 == 0) {
+        long long t = BinaryPower(base, p / 2);
+        return t * t % m_module;
+    } else {
+        return BinaryPower(base, p - 1) * base % m_module;
+    }
+}
+
+long long ModularArithmetic::InverseElement(long long x) const {
+    return BinaryPower(x, m_module - 2);
 }
 
 /*
