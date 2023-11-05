@@ -1,17 +1,14 @@
-#ifndef TEXTENCRYPTOR_H
-#define TEXTENCRYPTOR_H
-
+#pragma once
 #include <string>
+#include "IEncryption.h"
 
 class TextEncryptor {
-private:
-    int m_key;
-
 public:
-    explicit TextEncryptor(const std::string& encryptionKey);
+    explicit TextEncryptor(IEncryption* encryption);
 
     std::string Encrypt(const std::string& text) const;
     std::string Decrypt(const std::string& encryptedText) const;
-};
 
-#endif
+private:
+    IEncryption* m_encryption;
+};

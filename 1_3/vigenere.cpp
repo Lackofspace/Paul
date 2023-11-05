@@ -28,8 +28,8 @@ string generateRandomKey(int length) {
 }
 
 string vigenereEncrypt(const string& plaintext, const string& key) {
-    string ciphertext;
-    std::string::size_type keyLength = key.length();
+    std::string ciphertext;
+    size_t keyLength = key.length();
 
     for (int i = 0; i < plaintext.length(); i++) {
         char plainChar = plaintext[i];
