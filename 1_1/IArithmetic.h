@@ -4,8 +4,8 @@ class IArithmetic {
 public:
     virtual ~IArithmetic() = default;
 
-    virtual int Add(int a, int b) const = 0;
-    virtual int Subtract(int a, int b) const = 0;
-    virtual int Multiply(int a, int b) const = 0;
-    virtual int Divide(int a, int b) const = 0;
+    virtual long long Add(long long a, long long b) const = 0;
+    virtual long long Subtract(long long a, long long b) const = 0;
+    virtual long long Multiply(long long a, long long b) const = 0;
+    virtual long long Divide(long long a, long long b) const = 0;
 };
