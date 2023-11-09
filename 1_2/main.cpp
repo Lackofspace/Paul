@@ -4,8 +4,8 @@
 #include "InputStream/FIleInputStream.h"
 
 int main(int argc, char** argv) {
-    std::cout << "Enter file path and encryption key\n";
-    if (argc < 2)
+    std::cout << "Enter file path, encryption key and mode (-d | -e): -d stands for decryption and -e stands for encryption\n";
+    if (argc < 3)
     {
         std::cout << "Missing file path in program arguments\n";
 
@@ -14,6 +14,7 @@ int main(int argc, char** argv) {
 
     std::string filePath = argv[1];
     std::string encryptionKey = argv[2];
+    std::string mode = argv[3];
 
     auto* vigenereEncryption = new VigenereEncryption(encryptionKey);
     TextEncryptor encryptor(vigenereEncryption);
@@ -22,12 +23,17 @@ int main(int argc, char** argv) {
     FileInputStream fileInputStream(filePath);
     char* buffer = new char[fileInputStream.GetStreamSize()];
     fileInputStream.ReadFile(buffer);
-    std::string encryptedText = encryptor.Encrypt(buffer);
-    std::string decryptedText = encryptor.Decrypt(const_cast<char *>(encryptedText.c_str()));
 
-    std::cout << "Original Text: " << buffer << std::endl;
-    std::cout << "Encrypted Text: " << encryptedText << std::endl;
-    std::cout << "Decrypted Text: " << decryptedText << std::endl;
+    std::string result;
+    if (mode == "-e") {
+        result = encryptor.Encrypt(buffer);
+    }
+    else if (mode == "-d")
+    {
+        result = encryptor.Decrypt(buffer);
+    }
+
+    std::cout << result;
 
     return EXIT_SUCCESS;
 }
