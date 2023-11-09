@@ -6,8 +6,8 @@ class TextEncryptor {
 public:
     explicit TextEncryptor(IEncryption* encryption);
 
-    std::string Encrypt(const std::string& text) const;
-    std::string Decrypt(const std::string& encryptedText) const;
+    std::string Encrypt(char* text) const;
+    std::string Decrypt(char* encryptedText) const;
 
 private:
     IEncryption* m_encryption;

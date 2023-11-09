@@ -9,14 +9,7 @@ std::string VigenereEncryption::Encrypt(const std::string &text) const {
         char plainChar = text[i];
         char keyChar = m_key[i % keyLength];
 
-        char encryptedChar = plainChar;
-        if (std::islower(plainChar)) {
-            encryptedChar = static_cast<char>('a' + (plainChar - 'a' + keyChar - 'a') % 26);
-        }
-        if (std::isupper(plainChar))
-        {
-            encryptedChar = static_cast<char>('A' + (plainChar - 'A' + keyChar - 'A') % 26);
-        }
+        char encryptedChar = static_cast<char>((plainChar + keyChar) % 256);
 
         ciphertext += encryptedChar;
     }
@@ -32,14 +25,9 @@ std::string VigenereEncryption::Decrypt(const std::string &cipherText) const {
         char encryptedChar = cipherText[i];
         char keyChar = m_key[i % keyLength];
 
-        char decryptedChar = encryptedChar;
-        if (std::islower(encryptedChar)) {
-            decryptedChar = static_cast<char>('a' + (encryptedChar - keyChar + 26) % 26);
-        }
-        if (std::isupper(encryptedChar))
-        {
-            decryptedChar = static_cast<char>('A' + (encryptedChar - keyChar + 26) % 26);
-        }
+        char decryptedChar;
+
+        decryptedChar = static_cast<char>((encryptedChar - keyChar + 256) % 256);
 
         plaintext += decryptedChar;
     }
