@@ -1,15 +1,20 @@
 #include "TextEncryptor.h"
 
-TextEncryptor::TextEncryptor(IEncryption* encryption): m_encryption(encryption)
-{
+TextEncryptor::TextEncryptor(Lab1::IEncryption *encryption) {
+    SetEncryption(encryption);
 }
 
-std::string TextEncryptor::Encrypt(char* text) const
-{
+unsigned char *TextEncryptor::Encrypt(const char *text) const {
     return m_encryption->Encrypt(text);
 }
 
 
-std::string TextEncryptor::Decrypt(char* encryptedText) const {
+unsigned char * TextEncryptor::Decrypt(const char *encryptedText) const {
     return m_encryption->Decrypt(encryptedText);
+}
+
+void TextEncryptor::SetEncryption(Lab1::IEncryption *encryption) {
+    if (encryption != nullptr) {
+        m_encryption = encryption;
+    }
 }

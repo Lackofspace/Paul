@@ -2,11 +2,15 @@
 #include "TextEncryptor.h"
 #include "VigenereEncryption.h"
 #include "InputStream/FIleInputStream.h"
+#include "OutputStream/FileOutputStream.h"
 
-int main(int argc, char** argv) {
-    std::cout << "Enter file path, encryption key and mode (-d | -e): -d stands for decryption and -e stands for encryption\n";
-    if (argc < 3)
-    {
+using namespace Lab1;
+
+int main(int argc, char **argv) {
+    setlocale(LC_ALL, "");
+    std::cout
+            << "Enter file path, encryption key and mode (-d | -e): -d stands for decryption and -e stands for encryption\n";
+    if (argc < 3) {
         std::cout << "Missing file path in program arguments\n";
 
         return EXIT_FAILURE;
@@ -16,24 +20,24 @@ int main(int argc, char** argv) {
     std::string encryptionKey = argv[2];
     std::string mode = argv[3];
 
-    auto* vigenereEncryption = new VigenereEncryption(encryptionKey);
+    auto *vigenereEncryption = new VigenereEncryption(encryptionKey);
     TextEncryptor encryptor(vigenereEncryption);
     std::string originalText;
 
     FileInputStream fileInputStream(filePath);
-    char* buffer = new char[fileInputStream.GetStreamSize()];
+    std::streamsize fileSize = fileInputStream.GetStreamSize();
+    char *buffer = new char[fileSize];
     fileInputStream.ReadFile(buffer);
 
-    std::string result;
+    unsigned char* result;
     if (mode == "-e") {
         result = encryptor.Encrypt(buffer);
-    }
-    else if (mode == "-d")
-    {
+    } else if (mode == "-d") {
         result = encryptor.Decrypt(buffer);
     }
 
-    std::cout << result;
+    FileOutputStream fileOutputStream("output.res");
+    fileOutputStream.WriteBlock(result, fileSize);
 
     return EXIT_SUCCESS;
 }

@@ -7,4 +7,7 @@ add_executable(1_2 main.cpp IEncryption.h TextEncryptor.h TextEncryptor.cpp Vige
         InputStream/IInputStream.h
         InputStream/FileInputStream.h
         InputStream/FileInputStream.cpp
+        OutputStream/IOutputStream.h
+        OutputStream/FileOutputStream.cpp
+        OutputStream/FileOutputStream.h
 )

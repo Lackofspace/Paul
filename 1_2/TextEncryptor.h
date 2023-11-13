@@ -1,14 +1,18 @@
 #pragma once
+
 #include <string>
 #include "IEncryption.h"
 
 class TextEncryptor {
 public:
-    explicit TextEncryptor(IEncryption* encryption);
+    explicit TextEncryptor(Lab1::IEncryption *encryption);
 
-    std::string Encrypt(char* text) const;
-    std::string Decrypt(char* encryptedText) const;
+    void SetEncryption(Lab1::IEncryption* encryption);
+
+    unsigned char *Encrypt(const char *text) const;
+
+    unsigned char *Decrypt(const char *encryptedText) const;
 
 private:
-    IEncryption* m_encryption;
+    Lab1::IEncryption *m_encryption;
 };

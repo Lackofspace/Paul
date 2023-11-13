@@ -2,13 +2,15 @@
 
 #include <string>
 #include "IEncryption.h"
+#include <ostream>
 
-class VigenereEncryption : public IEncryption {
+class VigenereEncryption : public Lab1::IEncryption {
 public:
-    explicit VigenereEncryption(const std::string& key);
+    explicit VigenereEncryption(const std::string &key);
 
-    std::string Encrypt(const std::string& text) const override;
-    std::string Decrypt(const std::string& cipherText) const override;
+    unsigned char* Encrypt(const std::string &text) const override;
+
+    unsigned char* Decrypt(const std::string &cipherText) const override;
 
 private:
     std::string m_key;

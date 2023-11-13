@@ -1,24 +1,23 @@
 #include "VigenereEncryption.h"
 
-
-std::string VigenereEncryption::Encrypt(const std::string &text) const {
-    std::string ciphertext;
+unsigned char *VigenereEncryption::Encrypt(const std::string &text) const {
     size_t keyLength = m_key.length();
+    auto *ciphertext = new unsigned char[text.length()];
 
     for (int i = 0; i < text.length(); i++) {
         char plainChar = text[i];
         char keyChar = m_key[i % keyLength];
 
-        char encryptedChar = static_cast<char>((plainChar + keyChar) % 256);
+        auto encryptedChar = static_cast<unsigned char>((plainChar + keyChar) % 256);
 
-        ciphertext += encryptedChar;
+        ciphertext[i] = encryptedChar;
     }
 
     return ciphertext;
 }
 
-std::string VigenereEncryption::Decrypt(const std::string &cipherText) const {
-    std::string plaintext;
+unsigned char *VigenereEncryption::Decrypt(const std::string &cipherText) const {
+    unsigned char *plaintext;
     std::string::size_type keyLength = m_key.length();
 
     for (int i = 0; i < cipherText.length(); i++) {
@@ -35,5 +34,5 @@ std::string VigenereEncryption::Decrypt(const std::string &cipherText) const {
     return plaintext;
 }
 
-VigenereEncryption::VigenereEncryption(const std::string& key): m_key(key) {
+VigenereEncryption::VigenereEncryption(const std::string &key) : m_key(key) {
 }
